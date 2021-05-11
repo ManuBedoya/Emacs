@@ -1,0 +1,93 @@
+;;;------------------------------------------------------------------------------
+;;                              Manuel's emacs Configuration
+;;------------------------------------------------------------------------------
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" default)))
+ '(package-selected-packages
+   (quote
+    (traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+;;----------------------------------------
+;; This is a theme to colors in the editor (install with M-x pckage install ENTER then melancholy ENTER)
+;;----------------------------------------
+(load-theme 'melancholy t)
+;; Prevents creation of back-up ~files.
+(setq backup-inhibited t)
+;; Highlights whitespaces and lines over 80 characters.
+(require 'whitespace)
+(setq whitespace-style '(face empty lines-tail trailing))
+(global-whitespace-mode t)
+;; Disables auto-save.
+(setq auto-save-default nil)
+;; Enables use of C-c to copy, C-x to cut...
+(cua-mode 1)
+;; Auto closing brackets.
+(electric-pair-mode 1)
+;; Highlights parenthesis and brackets.
+(show-paren-mode t)
+;; Remembers cursor's last position.
+(if (version< emacs-version "25.0")
+        (progn
+                (require 'saveplace)
+                      (setq-default save-place t))
+  (save-place-mode 1)
+  )
+;; UTF-8 as default encoding.
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+;; Shows cursor position within line.
+(column-number-mode 1)
+;; Shows line number column on the left by default.
+(global-linum-mode t)
+;; Makes lines column wider.
+(setq linum-format "%3d\u2502 ")
+;; Set default C style.
+(setq c-default-style "linux" c-basic-offset 4)
+;; Sets tabulation spaces.
+(setq c-basic-offset 8 tab-width 8)
+;; Makes tab key always call an indent command.
+(setq-default tab-always-indent t)
+;; Make tab key call indent command or insert tab character.
+(setq-default tab-always-indent nil)
+;; Make tab key do indent first then completion.
+(setq-default tab-always-indent 'complete)
+;; Bound f5 to comment and f6 to uncomment region.
+(global-set-key [f5] 'comment-region)
+(global-set-key [f6] 'uncomment-region);;-------------
+;; Autocomplete (install with M-x pckage install ENTER then auto-complete ENTER)
+;;-------------
+;;(global-auto-complete-mode t) <--Uncommit this
+;;--------
+;; Swipper (install with M-x pckage install ENTER then Swipper ENTER)
+;;--------
+;;(ivy-mode) <--Uncommit this
+;;(setq ivy-use-virtual-buffers t) <--Uncommit this
+;;(setq enable-recursive-minibuffers t) <--Uncommit this
+;;(global-set-key "\C-s" 'swiper) <--Uncommit this
+;;---------------------------------------------
+;; flycheck: To sintaxis of python, c/c++ etc.. (install with M-x pckage install ENTER then flycheck ENTER)
+;;---------------------------------------------
+(global-flycheck-mode)
+;;----------------------------------------
+;; Jedi: To info about functions of python (install with M-x pckage install ENTER then jedi ENTER)
+;;----------------------------------------
+;;(add-hook 'python-mode-hook 'jedi:setup) <--Uncommit this
+;;(setq jedi:complete-on-dot t) <--Uncommit this
