@@ -18,7 +18,7 @@
     ("716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" default)))
  '(package-selected-packages
    (quote
-    (traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
+    (yasnippet-snippets traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,6 +28,7 @@
 ;;----------------------------------------
 ;; This is a theme to colors in the editor (install with M-x pckage install ENTER then melancholy ENTER)
 ;;----------------------------------------
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'melancholy t)
 ;; Prevents creation of back-up ~files.
 (setq backup-inhibited t)
@@ -78,10 +79,10 @@
 ;;--------
 ;; Swipper (install with M-x pckage install ENTER then Swipper ENTER)
 ;;--------
-;;(ivy-mode) <--Uncommit this
-;;(setq ivy-use-virtual-buffers t) <--Uncommit this
-;;(setq enable-recursive-minibuffers t) <--Uncommit this
-;;(global-set-key "\C-s" 'swiper) <--Uncommit this
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
 ;;---------------------------------------------
 ;; flycheck: To sintaxis of python, c/c++ etc.. (install with M-x pckage install ENTER then flycheck ENTER)
 ;;---------------------------------------------
@@ -89,5 +90,13 @@
 ;;----------------------------------------
 ;; Jedi: To info about functions of python (install with M-x pckage install ENTER then jedi ENTER)
 ;;----------------------------------------
-;;(add-hook 'python-mode-hook 'jedi:setup) <--Uncommit this
-;;(setq jedi:complete-on-dot t) <--Uncommit this
+;;(add-hook 'python-mode-hook 'jedi:setup)
+;;(setq jedi:complete-on-dot t)
+
+;;------------------------------------------------------
+;; Yasnippet: Script of some languages: python, c, etc..
+;;------------------------------------------------------
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
