@@ -1,0 +1,21 @@
+SHORTCUTS IN EMACS:
+C-x C-f -> Open new file
+C-x C-s -> Save
+C-x 2/3 -> Multiply windows
+Alt + shift + 5 -> replace a word
+C-x b -> Switch a previous file
+C-x o -> Change of the open files
+C-x h -> Select all text
+C-x u -> undo
+C-w -> Cut a text
+C-y -> Paste a text
+C-s -> Search a word forward
+C-r -> Search a word Backward
+C-a -> Move to begin of the line
+C-e -> Move to end of the line
+Alt + </> -> Move to begin of the file
+Alt + shift + </> -> Move to end of the file
+M-x tabify/untibify -> switch spaces to tabs/tabs to spaces
+M-x global-linum-mode -> enable and disable the left numbers
+M-! -> to type a shell command
+M-g g #line -> go to #line
