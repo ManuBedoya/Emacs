@@ -1,6 +1,22 @@
-;;;------------------------------------------------------------------------------
-;;                              Manuel's emacs Configuration
-;;------------------------------------------------------------------------------
+;;                                    ;; ---- ----       ---- ----  ---- ---- ---- ----  ---- ----       ----  ----           ---- ;;
+;;                                    ;; ----  ----     ----  ----  ---- ---- ---- ----  ----  ----      ----  ----           ---- ;;
+;;                                    ;; ----   ----   ----   ----  ----           ----  ----   ----     ----  ----           ---- ;;
+;;                                    ;; ----    ---- ----    ----  ---- ---- ---- ----  ----    ----    ----  ----           ---- ;;
+;;                                    ;; ----                 ----  ----           ----  ----     ----   ----  ----           ---- ;;
+;;                                    ;; ----                 ----  ----           ----  ----      ----  ----  ---- ---- ---- ---- ;;
+;;                                    ;; ----                 ----  ----           ----  ----       ---- ----  ---- ---- ---- ---- ;;
+;;                                    ;; ----------------------------------------------------------------------------------------- ;;
+;;                                    ;;       ------------------------------------------------------------------------------      ;;
+;;                                    ;;             ------------------------------------------------------------                  ;;
+;;                                    ;;                   ------------------------------------------                              ;;
+;;                                    ;;                              -----------------------                                      ;;
+;;                                    ;;                                      ----                                                 ;;
+;;                                    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;
+;;
+;;
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
@@ -18,17 +34,17 @@
     ("716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" default)))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets yasnippet traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
+    (org-babel-eval-in-repl org-bullets yasnippet-snippets yasnippet traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-;;----------------------------------------
-;; This is a theme to colors in the editor
-;;----------------------------------------
-(load-theme 'melancholy t)
+;;------------------------------------
+;;         General settings
+;;------------------------------------
+
 ;; Prevents creation of back-up ~files.
 (setq backup-inhibited t)
 ;; Highlights whitespaces and lines over 80 characters.
@@ -72,29 +88,7 @@
 ;; Bound f5 to comment and f6 to uncomment region.
 (global-set-key [f5] 'comment-region)
 (global-set-key [f6] 'uncomment-region);;-------------
-;; Autocomplete
-;;-------------
-(global-auto-complete-mode t)
-;;--------
-;; Swipper
-;;--------
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-(global-set-key "\C-s" 'swiper)
-;;---------------------------------------------
-;; flycheck: To sintaxis of python, c/c++ etc..
-;;---------------------------------------------
-(global-flycheck-mode)
-;;----------------------------------------
-;; Jedi: To info about functions of python
-;;----------------------------------------
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-;;---------------------------------------
-;; Yasnipet: Autocomplete functions
-;;---------------------------------------
-(add-to-list 'load-path
-              "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
+;;-------------------------------------------
+;;               Customize settings
+;;-------------------------------------------
+(org-babel-load-file (expand-file-name "~/.emacs.d/customize.org"))
