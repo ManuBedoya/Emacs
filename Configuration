@@ -18,7 +18,7 @@
     ("716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" default)))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
+    (yasnippet-snippets yasnippet traad jedi flycheck swiper auto-complete multiple-cursors melancholy-theme cl-lib-highlight))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,9 +26,8 @@
  ;; If there is more than one, they won't work right.
  )
 ;;----------------------------------------
-;; This is a theme to colors in the editor (install with M-x pckage install ENTER then melancholy ENTER)
+;; This is a theme to colors in the editor
 ;;----------------------------------------
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'melancholy t)
 ;; Prevents creation of back-up ~files.
 (setq backup-inhibited t)
@@ -73,29 +72,28 @@
 ;; Bound f5 to comment and f6 to uncomment region.
 (global-set-key [f5] 'comment-region)
 (global-set-key [f6] 'uncomment-region);;-------------
-;; Autocomplete (install with M-x pckage install ENTER then auto-complete ENTER)
+;; Autocomplete
 ;;-------------
-;;(global-auto-complete-mode t) <--Uncommit this
+(global-auto-complete-mode t)
 ;;--------
-;; Swipper (install with M-x pckage install ENTER then Swipper ENTER)
+;; Swipper
 ;;--------
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
 (global-set-key "\C-s" 'swiper)
 ;;---------------------------------------------
-;; flycheck: To sintaxis of python, c/c++ etc.. (install with M-x pckage install ENTER then flycheck ENTER)
+;; flycheck: To sintaxis of python, c/c++ etc..
 ;;---------------------------------------------
 (global-flycheck-mode)
 ;;----------------------------------------
-;; Jedi: To info about functions of python (install with M-x pckage install ENTER then jedi ENTER)
+;; Jedi: To info about functions of python
 ;;----------------------------------------
-;;(add-hook 'python-mode-hook 'jedi:setup)
-;;(setq jedi:complete-on-dot t)
-
-;;------------------------------------------------------
-;; Yasnippet: Script of some languages: python, c, etc..
-;;------------------------------------------------------
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+;;---------------------------------------
+;; Yasnipet: Autocomplete functions
+;;---------------------------------------
 (add-to-list 'load-path
               "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
