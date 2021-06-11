@@ -1,0 +1,27 @@
+this is my personal customize of emacs
+* Plugins
+** swiper
+  #+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path
+               "~/.emacs.d/plugins/swiper")
+  (ivy-mode)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  (global-set-key "\C-s" 'swiper)
+  #+END_SRC
+
+* Theme
+  This is the current theme of emacs
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path
+                  "~/.emacs.d/themes/afternoon-theme")
+     (load-theme 'afternoon t)
+   #+END_SRC
+* org
+** points in the *
+   #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path
+                 "~/.emacs.d/plugins/org-bullets")
+    (require 'org-bullets)
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+   #+END_SRC
